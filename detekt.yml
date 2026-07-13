@@ -1,0 +1,90 @@
+build:
+  maxIssues: 0
+
+config:
+  validation: true
+  warningsAsErrors: false
+
+processors:
+  active: true
+
+output-reports:
+  active: true
+
+naming:
+  active: true
+  MatchingDeclarationName:
+    active: false
+  FunctionNaming:
+    active: true
+    functionPattern: '[a-z][a-zA-Z0-9]*'
+    excludes: ['**/test/**', '**/androidTest/**']
+    # Compose @Composable functions use PascalCase by convention
+    ignoreAnnotated: ['androidx.compose.runtime.Composable']
+  VariableNaming:
+    active: true
+    variablePattern: 'm_[a-zA-Z][a-zA-Z0-9]*|[a-z][a-zA-Z0-9]*'
+    privateVariablePattern: '_m_[a-zA-Z][a-zA-Z0-9]*|m_[a-zA-Z][a-zA-Z0-9]*|_[a-zA-Z][a-zA-Z0-9]*|[a-z][a-zA-Z0-9]*'
+  ConstructorParameterNaming:
+    active: true
+    parameterPattern: 'm_[a-zA-Z][a-zA-Z0-9]*|[a-z][a-zA-Z0-9]*'
+    privateParameterPattern: 'm_[a-zA-Z][a-zA-Z0-9]*|[a-z][a-zA-Z0-9]*'
+  FunctionParameterNaming:
+    active: true
+    parameterPattern: 'm_[a-zA-Z][a-zA-Z0-9]*|[a-z][a-zA-Z0-9]*'
+  ClassNaming:
+    active: true
+    classPattern: '[A-Z][a-zA-Z0-9]*'
+
+complexity:
+  active: true
+  LongMethod:
+    active: true
+    threshold: 60
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+  LongParameterList:
+    active: true
+    functionThreshold: 8
+    constructorThreshold: 8
+    ignoreDataClasses: true
+  TooManyFunctions:
+    active: true
+    thresholdInFiles: 20
+    thresholdInClasses: 15
+
+style:
+  active: true
+  MagicNumber:
+    active: false
+  MaxLineLength:
+    active: true
+    maxLineLength: 140
+  WildcardImport:
+    active: true
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated: ['androidx.compose.ui.tooling.preview.Preview']
+  ReturnCount:
+    active: true
+    max: 3
+
+potential-bugs:
+  active: true
+  EqualsAlwaysReturnsTrueOrFalse:
+    active: true
+  UnreachableCode:
+    active: true
+
+performance:
+  active: true
+  ArrayPrimitive:
+    active: true
+
+exceptions:
+  active: true
+  TooGenericExceptionCaught:
+    active: true
+  SwallowedException:
+    active: true
