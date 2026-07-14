@@ -1,6 +1,7 @@
 package com.example.weatherapp2026.util
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -25,6 +26,7 @@ class CCLocationHelper @Inject constructor(
 ) {
     private val m_fusedClient = LocationServices.getFusedLocationProviderClient(m_context)
 
+    @SuppressLint("MissingPermission")
     fun getCurrentLocation(): Flow<Location?> = callbackFlow {
         if (!hasLocationPermission()) {
             Timber.w("Location permission not granted — emitting null")
