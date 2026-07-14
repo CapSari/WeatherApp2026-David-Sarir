@@ -42,16 +42,6 @@ jobs:
           name: unit-test-results
           path: app/build/reports/tests/testDebugUnitTest/
 
-      - name: Generate JaCoCo coverage report
-        run: ./gradlew jacocoTestReport --no-daemon
-
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coverage-report
-          path: app/build/reports/jacoco/
-
   static-analysis:
     name: Static Analysis
     runs-on: ubuntu-latest
